@@ -12,8 +12,9 @@ control 'core-plans-openssl-musl' do
   '
   openssl_musl_pkg = command("#{hab_path} pkg path #{plan_ident}")
   describe openssl_musl_pkg do
-    its('exit_status') { should eq 0 }
     its('stdout') { should_not be_empty }
+    its('stderr') { should be_empty }
+    its('exit_status') { should eq 0 }
   end
   openssl_musl_pkg = openssl_musl_pkg.stdout.strip
 
