@@ -1,7 +1,7 @@
 pkg_name=openssl-musl
 _distname="openssl"
 pkg_origin=core
-pkg_version="1.0.2t"
+pkg_version="1.1.1"
 pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
 pkg_description="\
 OpenSSL is an open source project that provides a robust, commercial-grade, \
