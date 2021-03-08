@@ -1,7 +1,7 @@
 pkg_name=openssl-musl
 _distname="openssl"
 pkg_origin=core
-pkg_version="1.1.1"
+pkg_version="1.0.2t"
 pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
 pkg_description="\
 OpenSSL is an open source project that provides a robust, commercial-grade, \
@@ -12,7 +12,7 @@ library.\
 pkg_upstream_url="https://www.openssl.org"
 pkg_license=('OpenSSL')
 pkg_source="https://www.openssl.org/source/${_distname}-${pkg_version}.tar.gz"
-pkg_shasum="14cb464efe7ac6b54799b34456bd69558a749a4931ecfd9cf9f71d7881cac7bc"
+pkg_shasum="2836875a0f89c03d0fdf483941512613a50cfb421d6fd94b9f41d7279d586a3d"
 pkg_dirname="${_distname}-${pkg_version}"
 pkg_deps=(
   core/musl
