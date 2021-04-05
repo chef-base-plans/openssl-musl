@@ -1,7 +1,7 @@
 pkg_name=openssl-musl
 _distname="openssl"
 pkg_origin=core
-pkg_version="1.0.2t"
+pkg_version="1.1.1j"
 pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
 pkg_description="\
 OpenSSL is an open source project that provides a robust, commercial-grade, \
@@ -12,7 +12,7 @@ library.\
 pkg_upstream_url="https://www.openssl.org"
 pkg_license=('OpenSSL')
 pkg_source="https://www.openssl.org/source/${_distname}-${pkg_version}.tar.gz"
-pkg_shasum="14cb464efe7ac6b54799b34456bd69558a749a4931ecfd9cf9f71d7881cac7bc"
+pkg_shasum="aaf2fcb575cdf6491b98ab4829abf78a3dec8402b8b81efc8f23c00d443981bf"
 pkg_dirname="${_distname}-${pkg_version}"
 pkg_deps=(
   core/musl
@@ -36,14 +36,6 @@ pkg_pconfig_dirs=(lib/pkgconfig)
 
 _common_prepare() {
   do_default_prepare
-
-  # Set CA dir to `$pkg_prefix/ssl` by default and use the cacerts from the
-  # `cacerts` package. Note that `patch(1)` is making backups because
-  # we need an original for the test suite.
-  sed -e "s,@prefix@,$pkg_prefix,g" \
-      -e "s,@cacerts_prefix@,$(pkg_path_for cacerts),g" \
-      "$PLAN_CONTEXT/ca-dir.patch" \
-      | patch -p1 --backup
 
   # The openssl build process hard codes /bin/rm in many places. Unfortunately
   # we cannot modify the contents of the build scripts to fix this or else we
@@ -75,8 +67,6 @@ do_build() {
     no-idea \
     no-mdc2 \
     no-rc5 \
-    no-sslv2 \
-    no-sslv3 \
     no-comp \
     no-zlib \
     shared \
